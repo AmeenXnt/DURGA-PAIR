@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp QR Code</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const socket = io();
+      socket.on('qr', (qr) => {
+        document.getElementById('qrcode').src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + qr;
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Scan QR Code to Connect WhatsApp</h1>
+  <img id="qrcode" src="" alt="QR Code" />
+</body>
+</html>
